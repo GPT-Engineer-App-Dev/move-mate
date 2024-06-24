@@ -16,7 +16,12 @@ const WorkoutForm = ({ onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(workout);
+    const intensityMap = { '1': 'low', '2': 'medium', '3': 'high' };
+    const submittedWorkout = {
+      ...workout,
+      intensity: intensityMap[workout.intensity]
+    };
+    onSubmit(submittedWorkout);
     setWorkout({
       type: '',
       duration: '',
@@ -45,9 +50,9 @@ const WorkoutForm = ({ onSubmit }) => {
         <FormControl isRequired>
           <FormLabel>Intensity</FormLabel>
           <Select name="intensity" value={workout.intensity} onChange={handleChange} placeholder="Select intensity">
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
+            <option value="1">Low</option>
+            <option value="2">Medium</option>
+            <option value="3">High</option>
           </Select>
         </FormControl>
         <FormControl isRequired>

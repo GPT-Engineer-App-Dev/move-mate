@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, VStack, Heading } from '@chakra-ui/react';
+import ProgressTracker from '../components/ProgressTracker';
 import WorkoutForm from '../components/WorkoutForm';
 import WorkoutList from '../components/WorkoutList';
 
@@ -22,6 +23,7 @@ const WorkoutLogger = () => {
       <VStack spacing={8}>
         <Heading as="h1" size="xl">Workout Logger</Heading>
         <WorkoutForm onSubmit={handleSubmit} />
+        <ProgressTracker workouts={workouts} />
         <WorkoutList workouts={workouts} />
       </VStack>
     </Container>
